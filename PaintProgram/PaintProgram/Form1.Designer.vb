@@ -250,7 +250,7 @@ Partial Class Form1
         'Button21
         '
         Me.Button21.BackColor = System.Drawing.Color.White
-        Me.Button21.Location = New System.Drawing.Point(460, 25)
+        Me.Button21.Location = New System.Drawing.Point(434, 25)
         Me.Button21.Name = "Button21"
         Me.Button21.Size = New System.Drawing.Size(58, 54)
         Me.Button21.TabIndex = 26
@@ -260,7 +260,7 @@ Partial Class Form1
         'Button22
         '
         Me.Button22.BackColor = System.Drawing.Color.White
-        Me.Button22.Location = New System.Drawing.Point(396, 25)
+        Me.Button22.Location = New System.Drawing.Point(345, 25)
         Me.Button22.Name = "Button22"
         Me.Button22.Size = New System.Drawing.Size(58, 54)
         Me.Button22.TabIndex = 27
