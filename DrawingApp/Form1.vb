@@ -3,6 +3,11 @@
     Dim m_shapes As New Collection
     Dim c As Color
     Dim w As Integer
+    Dim h As Integer
+    Dim type As String
+    Dim s1 As Integer
+    Dim s2 As Integer
+
 
 
     Private Sub pictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
@@ -12,11 +17,30 @@
 
     Private Sub pictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
         If m_Previous IsNot Nothing Then
-            Dim l As New Circle(PictureBox1.Image, m_Previous, e.Location)
-            l.Pen = New Pen(c, w)
-            l.w = TrackBar1.Value
-            l.w = TrackBar2.Value
-            m_shapes.Add(l)
+
+            Dim d As Object
+
+            If type = "Line" Then
+                d = New Line(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Rectangle" Then
+                d = New Rect(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Circle" Then
+                d = New Circle(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Poly" Then
+                d = New Poly(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            m_shapes.Add(d)
             PictureBox1.Invalidate()
             m_Previous = e.Location
         End If
@@ -74,4 +98,39 @@
         PictureBox1.Image.Save(SaveFileDialog1.FileName)
     End Sub
 
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        type = "Rectangle"
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        type = "Line"
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        type = "Circle"
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        c = sender.backcolor
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        c = sender.backcolor
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        c = sender.backcolor
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        c = sender.backcolor
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        c = sender.backcolor
+    End Sub
+
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+        type = "Poly"
+    End Sub
 End Class
