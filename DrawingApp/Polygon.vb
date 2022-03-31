@@ -15,10 +15,12 @@
     End Sub
     Public Sub Draw()
         Using g As Graphics = Graphics.FromImage(m_image)
-            Dim points(2) As Point
+            Dim points(4) As Point
             points(0) = New Point(m_a.X, m_a.Y)
             points(1) = New Point(m_a.X, m_a.Y + 50)
             points(2) = New Point(m_a.X + 50, m_a.Y)
+            points(3) = New Point(m_a.X + 70, m_a.Y)
+            points(4) = New Point(m_a.X + 12, m_a.Y + 40)
 
             g.DrawPolygon(Pen, points)
         End Using

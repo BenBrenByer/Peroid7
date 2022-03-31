@@ -40,6 +40,21 @@
                 d.pen = New Pen(c, w)
             End If
 
+            If type = "N-Gon" Then
+                d = New N_Gon(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+                d.radius = TrackBar5.Value
+                d.sides = TrackBar4.Value
+            End If
+
+            If type = "Picture" Then
+                d = New PBox(PictureBox1.Image, m_Previous, e.Location)
+                d.w = TrackBar6.Value
+                d.h = TrackBar6.Value
+
+                d.picture = PictureBox2.Image
+            End If
+
             m_shapes.Add(d)
             PictureBox1.Invalidate()
             m_Previous = e.Location
@@ -70,7 +85,6 @@
         ColorDialog1.ShowDialog()
         c = ColorDialog1.Color
         Button1.BackColor = c
-
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -132,5 +146,21 @@
 
     Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
         type = "Poly"
+    End Sub
+
+    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
+        type = "N-Gon"
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        type = "Picture"
+    End Sub
+
+    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
+        OpenFileDialog1.ShowDialog()
+    End Sub
+
+    Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
+        PictureBox2.Load(OpenFileDialog1.FileName)
     End Sub
 End Class
