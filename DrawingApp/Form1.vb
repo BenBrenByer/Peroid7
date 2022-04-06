@@ -20,13 +20,19 @@
 
             Dim d As Object
 
+            d = New Line(PictureBox1.Image, m_Previous, e.Location)
+            d.pen = New Pen(c, w)
+
+
             If type = "Line" Then
                 d = New Line(PictureBox1.Image, m_Previous, e.Location)
                 d.pen = New Pen(c, w)
+                d.xSpeed = xSpeedTrackBar.Value
             End If
 
             If type = "Rectangle" Then
                 d = New Rect(PictureBox1.Image, m_Previous, e.Location)
+                d.fill = CheckBox2.Checked
                 d.pen = New Pen(c, w)
             End If
 
@@ -65,6 +71,10 @@
         m_Previous = Nothing
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        clear()
+    End Sub
+
+    Sub clear()
         If PictureBox1.Image Is Nothing Then
             Dim bmp As New Bitmap(PictureBox1.Width, PictureBox1.Height)
             Using g As Graphics = Graphics.FromImage(bmp)
@@ -72,13 +82,18 @@
             End Using
             PictureBox1.Image = bmp
         End If
-
     End Sub
 
     Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
+
+        clear()
+
         For Each s As Object In m_shapes
             s.Draw()
         Next
+        If (CheckBox1.Checked) Then
+            Refresh()
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -163,4 +178,5 @@
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
         PictureBox2.Load(OpenFileDialog1.FileName)
     End Sub
+
 End Class
