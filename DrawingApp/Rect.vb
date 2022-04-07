@@ -1,6 +1,8 @@
 ﻿Public Class Rect
     Public Property Pen As Pen
     Public Property fill As Boolean
+    Public Property color1 As Color
+    Public Property color2 As Color
     Dim m_image As Image
     Dim m_a As Point
     Dim m_b As Point
@@ -17,11 +19,12 @@
                 Dim lingrBrush As Drawing.Drawing2D.LinearGradientBrush
                 lingrBrush = New Drawing.Drawing2D.LinearGradientBrush(
                                 New Point(0, 10),
-                                New Point(200, 10),
-                                Color.FromArgb(255, 255, 0, 0),
-                                Color.FromArgb(255, 0, 0, 255))
+                                New Point(100, 10),
+                                color1,
+                                color2)
 
-                g.FillRectangle(New SolidBrush(Pen.Color), m_a.X, m_b.Y, 100, 75)
+
+                g.FillRectangle(lingrBrush, m_a.X, m_b.Y, 100, 75)
             Else
                 g.DrawRectangle(Pen, m_a.X, m_b.Y, 100, 75)
             End If
