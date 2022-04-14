@@ -55,6 +55,26 @@
                 d.sides = TrackBar4.Value
             End If
 
+            If type = "Oct" Then
+                d = New Oct(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Pent" Then
+                d = New Pent(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Hept" Then
+                d = New Hept(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
+            If type = "Mix" Then
+                d = New Mix(PictureBox1.Image, m_Previous, e.Location)
+                d.pen = New Pen(c, w)
+            End If
+
             If type = "Picture" Then
                 d = New PBox(PictureBox1.Image, m_Previous, e.Location)
                 d.w = TrackBar6.Value
@@ -185,4 +205,19 @@
         PictureBox2.Load(OpenFileDialog1.FileName)
     End Sub
 
+    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
+        type = "Oct"
+    End Sub
+
+    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+        type = "Pent"
+    End Sub
+
+    Private Sub Button19_Click(sender As Object, e As EventArgs) Handles Button19.Click
+        type = "Hept"
+    End Sub
+
+    Private Sub Button20_Click(sender As Object, e As EventArgs) Handles Button20.Click
+        type = "Mix"
+    End Sub
 End Class

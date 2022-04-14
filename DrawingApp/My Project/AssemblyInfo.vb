@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("WindowsApplication1")>
+<Assembly: AssemblyTitle("Paint Program")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Microsoft")>
 <Assembly: AssemblyProduct("WindowsApplication1")>
